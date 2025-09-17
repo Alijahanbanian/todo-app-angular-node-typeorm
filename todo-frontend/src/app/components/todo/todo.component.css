@@ -1,0 +1,30 @@
+.list {
+    flex-direction: unset;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 20px;
+}
+
+.update-form {
+    flex-direction: column !important;
+    text-align: end;
+    justify-content: end;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+}
+
+.right {
+    text-align: end;
+    justify-content: end;
+}
+
+.custom-field {
+    border: none;
+}
+
+::ng-deep .custom-field {
+    border: none;
+}

@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">To-Do List</mat-toolbar>
+<div style="display: flex; justify-content: center;">
+  <div style=" width: 75%; justify-self: center;">
+    <mat-card class="list">
+      <form (ngSubmit)="addTodo()" class="input right">
+        <mat-form-field appearance="fill" style="width: 100% !important;">
+          <mat-label>Title</mat-label>
+          <input matInput [(ngModel)]="newTodo.title" name="title" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Add
+        </button>
+      </form>
+    </mat-card>
+
+    <mat-card *ngFor="let todo of sortedTodos" class="list">
+      <ng-container *ngIf="editingId !== todo.id; else editForm">
+        <mat-checkbox [(ngModel)]="todo.done" (change)="toggleDone(todo)">
+          <span [style.textDecoration]="todo.done ? 'line-through' : 'none'">
+            {{ todo.title }}
+          </span>
+        </mat-checkbox>
+        <div class="bottons">
+          <button mat-icon-button (click)="startEdit(todo)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteTodo(todo.id)">
+            <mat-icon style="color: rgb(197, 0, 0);">delete</mat-icon>
+          </button>
+        </div>
+
+      </ng-container>
+      <ng-template #editForm>
+        <div class="update-form">
+          <mat-form-field appearance="fill" style="width: 100% !important;">
+            <mat-label>Edit Title</mat-label>
+            <input matInput [(ngModel)]="updateTodos.title" class="input" />
+          </mat-form-field>
+          <div class="bottons-edit">
+            <button mat-raised-button color="primary" (click)="updateTodo()">OK</button>
+            <button mat-button (click)="cancelEdit()">Cancel</button>
+          </div>
+        </div>
+      </ng-template>
+    </mat-card>
+  </div>
+</div>
