@@ -114,7 +114,7 @@ cd todo
 
 ---
 
-## 🧑‍💻 Development Scripts
+## Development Scripts
 
 ### Backend
 - `npm run dev` → Start server in development mode
